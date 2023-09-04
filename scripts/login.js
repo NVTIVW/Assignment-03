@@ -1,10 +1,11 @@
 "use strict";
+// variable
 const inputUsername = document.getElementById("input-username");
 const inputPassword = document.getElementById("input-password");
 const btnSubmit = document.getElementById("btn-submit");
 
+// button login, save user is logging to storage and move to home page
 btnSubmit.addEventListener("click", function () {
-  console.log(userArr);
   const validate = isValidate();
   if (validate) {
     // let user;
@@ -19,11 +20,15 @@ btnSubmit.addEventListener("click", function () {
     //     break;
     //   }
     // }
+
+    // find user that match user in array
     const user = userArr.find(
       (item) =>
         item.username === inputUsername.value &&
         item.password === inputPassword.value
     );
+
+    // save current user
     if (user) {
       saveToStorage("currentUser", user);
       alert("Login Success");
@@ -34,6 +39,7 @@ btnSubmit.addEventListener("click", function () {
   }
 });
 
+// function check input
 function isValidate() {
   let validate = true;
   if (inputUsername.value.trim() == "") {

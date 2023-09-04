@@ -1,14 +1,16 @@
 "use strict";
+// variable
 const inputPageSize = document.getElementById("input-page-size");
 const inputCategory = document.getElementById("input-category");
 const btnSubmit = document.getElementById("btn-submit");
 
+// Save button: save properties pageSize and catelory to current user and array
 btnSubmit.addEventListener("click", function () {
   const isValidate = validate();
   if (isValidate) {
     for (let i = 0; i < userArr.length; i++) {
       if (userArr[i].username == currentUser.username) {
-        currentUser.catelory = inputCategory.value;
+        currentUser.catelory = inputCategory.value; // read value input and save to curent user
         currentUser.pageSize = inputPageSize.value;
         userArr[i] = currentUser;
         //userArr[i].pageSize = inputPageSize.value;
@@ -21,9 +23,10 @@ btnSubmit.addEventListener("click", function () {
   inputPageSize.textContent = inputPageSize.value;
 });
 
-inputPageSize.value = currentUser.pageSize;
+inputPageSize.value = currentUser.pageSize; // show value of pageSize
 inputCategory.value = currentUser.catelory;
 
+// check input
 function validate() {
   let validate = true;
   if (

@@ -1,4 +1,5 @@
 "use strict";
+// variable
 const inputFirstname = document.getElementById("input-firstname");
 const inputLastname = document.getElementById("input-lastname");
 const inputUsername = document.getElementById("input-username");
@@ -6,7 +7,9 @@ const inputPassword = document.getElementById("input-password");
 const inputPasswordCf = document.getElementById("input-password-confirm");
 const btnSubmit = document.getElementById("btn-submit");
 
+// button Register add user to user Array and save to storage
 btnSubmit.addEventListener("click", function () {
+  // create new user
   const user = new User(
     inputFirstname.value,
     inputLastname.value,
@@ -16,14 +19,16 @@ btnSubmit.addEventListener("click", function () {
     "General",
     []
   );
+  // check input
   const validate = validateData(user);
   if (validate) {
-    userArr.push(user);
-    saveToStorage("userArrStorage", userArr);
-    window.location.href = "../pages/login.html";
+    userArr.push(user); // add new user
+    saveToStorage("userArrStorage", userArr); // save to storage
+    window.location.href = "../pages/login.html"; // back home page
   }
 });
 
+// function check input
 function validateData(user) {
   let validate = true;
   if (user.firstname.trim() == "") {
